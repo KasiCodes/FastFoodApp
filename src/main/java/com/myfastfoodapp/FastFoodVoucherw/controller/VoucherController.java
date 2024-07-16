@@ -39,8 +39,13 @@ public class VoucherController {
     }
 
     @GetMapping()
-    public ResponseEntity<VoucherDTO> getAllVouchers(){
+    public ResponseEntity<List<VoucherDTO>> getAllVouchers(){
         List<VoucherDTO> vouchers = voucherService.getAllVouchers();
         return ResponseEntity.ok(vouchers);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<VoucherDTO> getVoucherById(@PathVariable Long id){
+        VoucherDTO voucherDTO = voucherService.getVoucherById(id);
+        return ResponseEntity.ok(voucherDTO);
     }
 }
