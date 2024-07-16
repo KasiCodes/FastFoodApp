@@ -1,5 +1,6 @@
 package com.myfastfoodapp.FastFoodVoucherw.service;
 
-public class TransactionService {
+public interface TransactionService {
+    
     
 }
