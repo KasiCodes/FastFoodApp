@@ -29,7 +29,7 @@ public class Voucher {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserClass user;
 
     // Constructors, getters, and setters
 }

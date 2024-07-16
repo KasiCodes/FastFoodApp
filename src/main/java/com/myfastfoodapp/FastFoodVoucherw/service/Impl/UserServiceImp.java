@@ -12,8 +12,9 @@ import com.myfastfoodapp.FastFoodVoucherw.dto.UserDTO;
 import com.myfastfoodapp.FastFoodVoucherw.repository.UserRepository;
 import com.myfastfoodapp.FastFoodVoucherw.service.UserService;
 
+
 @Service
-public class UserServiceImp  implements UserService{
+public class UserServiceImp  implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -27,6 +28,7 @@ public class UserServiceImp  implements UserService{
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setWalletBalance(0.0);
         User savedUser = userRepository.save(user);
+        
         return mapToDTO(savedUser);
 
     }
@@ -61,3 +63,4 @@ public class UserServiceImp  implements UserService{
 }
 
    
+<
