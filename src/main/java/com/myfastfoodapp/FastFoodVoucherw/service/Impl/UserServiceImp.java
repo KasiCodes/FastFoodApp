@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.myfastfoodapp.FastFoodVoucherw.dto.UserDTO;
+import com.myfastfoodapp.FastFoodVoucherw.model.UserInfo;
 import com.myfastfoodapp.FastFoodVoucherw.repository.UserRepository;
 import com.myfastfoodapp.FastFoodVoucherw.service.UserService;
 
@@ -22,19 +22,19 @@ public class UserServiceImp  implements UserService {
 
     @Override
     public UserDTO registerUser(UserDTO userDTO){
-        User user = new User();
+        UserInfo user = new UserInfo();
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setWalletBalance(0.0);
-        User savedUser = userRepository.save(user);
+        UserInfo savedUser = userRepository.save(user);
         
         return mapToDTO(savedUser);
 
     }
     @Override
     public String loginUser(UserDTO userDTO) {
-        User user = userRepository.findByEmail(userDTO.getEmail());
+        UserInfo user = userRepository.findByEmail(userDTO.getEmail());
         if (user != null && passwordEncoder.matches(userDTO.getPassword(), user.getPassword())) {
             // Generate and return JWT token
             return "jwt-token"; // Replace with actual token generation logic
@@ -44,15 +44,15 @@ public class UserServiceImp  implements UserService {
 
     @Override
     public UserDTO getUserById(Long id) {
-        User user = userRepository.findById(id).orElse(null);
+        UserInfo user = userRepository.findById(id).orElse(null);
         return mapToDTO(user);
     }
     @Override
     public List<UserDTO> getAllUsers() {
-        List<User> users = userRepository.findAll();
+        List<UserInfo> users = userRepository.findAll();
         return users.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
-    private UserDTO mapToDTO(User user) {
+    private UserDTO mapToDTO(UserInfo user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
@@ -63,4 +63,3 @@ public class UserServiceImp  implements UserService {
 }
 
    
-<

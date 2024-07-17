@@ -22,7 +22,7 @@ public class StoreController {
 
     @PostMapping
     public ResponseEntity<StoreDTO> createStore(@RequestBody StoreDTO storeDTO){
-        StoreDTO createdStore = storeService.createdStore(storeDTO);
+        StoreDTO createdStore = storeService.createStore(storeDTO);
         return ResponseEntity.ok(createdStore); 
     }
 

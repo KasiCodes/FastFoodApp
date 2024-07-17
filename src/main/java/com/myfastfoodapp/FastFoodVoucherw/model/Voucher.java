@@ -23,13 +23,20 @@ public class Voucher {
 
     private LocalDate expirationDate;
 
+    public Voucher(Long id,String code,Double value,LocalDate expirationDate){
+
+    }
+    public Voucher(){
+
+    }
+
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserClass user;
+    private UserInfo user;
 
-    // Constructors, getters, and setters
+    
 }

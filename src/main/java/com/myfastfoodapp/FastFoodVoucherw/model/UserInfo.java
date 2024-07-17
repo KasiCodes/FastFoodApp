@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 
-public class User {
+public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,10 +22,10 @@ public class User {
 
     
     // Default constructor
-    public User() {}
+    public UserInfo() {}
 
     // Constructor with fields
-    public User(String name, String email, String password, Double walletBalance) {
+    public UserInfo(String name, String email, String password, Double walletBalance) {
         this.name = name;
         this.email = email;
         this.password = password;
