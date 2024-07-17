@@ -1,6 +1,8 @@
 package com.myfastfoodapp.FastFoodVoucherw.model;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,6 +21,9 @@ public class UserInfo {
 
     @Column(name = "wallet_balance")
     private double walletBalance;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Voucher> vouchers;
 
     
     // Default constructor
@@ -66,5 +71,12 @@ public class UserInfo {
     }
     public void setName(String name){
         this.name = name;
+    }
+    public List<Voucher> getVouchers() {
+        return vouchers;
+    }
+
+    public void setVouchers(List<Voucher> vouchers) {
+        this.vouchers = vouchers;
     }   
 }

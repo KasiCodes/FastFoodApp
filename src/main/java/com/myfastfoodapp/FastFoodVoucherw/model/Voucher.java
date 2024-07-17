@@ -3,6 +3,7 @@ package com.myfastfoodapp.FastFoodVoucherw.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +27,15 @@ public class Voucher {
     @Column(name = "store_id")
     private Long storeId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserInfo user;
+
+
 
     private String code;
 
@@ -45,31 +55,52 @@ public class Voucher {
         this.userId = userId;
     }
 
-    public Long getId(){
+    public Long getId() {
         return id;
     }
-    public String getCode(){
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCode() {
         return code;
     }
-    public Double value(){
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Double getValue() {
         return value;
     }
-    public LocalDate getExpiaryDate(){
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
+    public LocalDate getExpirationDate() {
         return expirationDate;
     }
 
-    void setId(Long id){
-        this.id = id;
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
-    void setCode(String code){
-        this.code = code;
 
+    public Long getStoreId() {
+        return storeId;
     }
-    void setExpiaryDate(LocalDate expairyDate){
-        this.expirationDate = expairyDate;
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
-    void setValue(Double value){
-     this.value = value;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
     
     
