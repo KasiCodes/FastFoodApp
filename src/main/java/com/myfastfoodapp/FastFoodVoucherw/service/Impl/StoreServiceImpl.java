@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.myfastfoodapp.FastFoodVoucherw.dto.StoreDTO;
 import com.myfastfoodapp.FastFoodVoucherw.model.Store;
@@ -41,6 +42,12 @@ public class StoreServiceImpl implements StoreService {
         storeDTO.setName(store.getName());
         storeDTO.setLocation(store.getLocation());
         return storeDTO;
+    }
+    @Override 
+    public void deleteStoreById(Long Id){
+        storeRepository.deleteById(Id);
+
+
     }
     
 }

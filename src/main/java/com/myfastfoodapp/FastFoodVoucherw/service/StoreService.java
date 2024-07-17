@@ -8,5 +8,6 @@ public interface StoreService {
     StoreDTO createStore(StoreDTO storeDTO);
     StoreDTO getStoreById(Long id);
     List<StoreDTO> getAllStores();
+    void deleteStoreById(Long Id);
     
 }

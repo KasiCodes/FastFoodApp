@@ -60,6 +60,11 @@ public class UserServiceImp  implements UserService {
         userDTO.setWalletBalance(user.getWalletBalance());
         return userDTO;
     }
+    @Override
+    public void deleteUserById(Long id){
+        userRepository.deleteById(id);
+
+    }
 }
 
    

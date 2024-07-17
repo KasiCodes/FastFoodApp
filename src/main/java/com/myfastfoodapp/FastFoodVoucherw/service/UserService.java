@@ -10,4 +10,5 @@ public interface UserService {
     String loginUser(UserDTO userDTO);
     UserDTO getUserById(Long id);
     List<UserDTO> getAllUsers();
+    void deleteUserById(Long id);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myfastfoodapp.FastFoodVoucherw.dto.UserDTO;
+import com.myfastfoodapp.FastFoodVoucherw.service.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -37,7 +38,7 @@ public class UserController {
         return ResponseEntity.ok(userDTO);
     }
     @GetMapping
-    public ResponseEntity<UserDTO> getAllUsers(){
+    public ResponseEntity<List<UserDTO>> getAllUsers(){
         List<UserDTO> users = UserService.getAllUsers();
         return ResponseEntity.ok(users);
     }

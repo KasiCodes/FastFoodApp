@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myfastfoodapp.FastFoodVoucherw.dto.VoucherDTO;
@@ -17,7 +18,7 @@ import com.myfastfoodapp.FastFoodVoucherw.service.VoucherService;
 
 
 @RestController
-@GetMapping("/api/vouchers")
+@RequestMapping("/api/vouchers")
 public class VoucherController {
 
     @Autowired
