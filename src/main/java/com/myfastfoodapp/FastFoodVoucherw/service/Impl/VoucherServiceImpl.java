@@ -1,7 +1,10 @@
 package com.myfastfoodapp.FastFoodVoucherw.service.Impl;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,7 +24,7 @@ public class VoucherServiceImpl implements VoucherService{
     @Override
     public VoucherDTO buyVoucher(VoucherDTO voucherDTO){
         Voucher voucher = new Voucher();
-        voucher.setCode(VoucherDTO.getCode());
+        voucher.setCode(voucherDTO.getCode());;
         voucher.setValue(voucherDTO.getValue());
         voucher.setExpirationDate(voucherDTO.getExpirationDate());
         voucher.setStoreId(voucherDTO.getStoreId());
@@ -70,11 +73,36 @@ public class VoucherServiceImpl implements VoucherService{
         voucherDTO.setId(voucher.getId());
         voucherDTO.setCode(voucher.getCode());
         voucherDTO.setValue(voucher.getValue());
-        voucherDTO.setExpirationDate(voucher.getExpirationDate());
+        voucherDTO.setExpiaryDate(voucher.getExpirationDate());
         voucherDTO.setStoreId(voucher.getStoreId());
         voucherDTO.setUserId(voucher.getUserId());
         return voucherDTO;
     }
+    @Override
+    public void deleteVoucher(Long id) {
+        voucherRepository.deleteById(id);
+    }
+    @Override
+    public VoucherDTO updateVoucher(Long id, VoucherDTO voucherDTO) {
+        Optional<Voucher> optionalVoucher = voucherRepository.findById(id);
+        if (optionalVoucher.isPresent()) {
+            Voucher existingVoucher = optionalVoucher.get();
+            // Update existing voucher with data from voucherDTO
+            BeanUtils.copyProperties(voucherDTO, existingVoucher);
+            existingVoucher.setId(id); // Ensure ID is set correctly
+            // Save and return updated voucher
+            return convertToDto(voucherRepository.save(existingVoucher));
+        }
+        // Handle not found scenario, throw exception or return null as needed
+        return null;
+    }
+    private VoucherDTO convertToDto(Voucher voucher) {
+        VoucherDTO voucherDTO = new VoucherDTO();
+        BeanUtils.copyProperties(voucher, voucherDTO);
+        return voucherDTO;
+    }
+
+    
 
 
 

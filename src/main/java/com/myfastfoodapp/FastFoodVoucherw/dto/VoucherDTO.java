@@ -1,10 +1,12 @@
 package com.myfastfoodapp.FastFoodVoucherw.dto;
 
+import java.time.LocalDate;
+
 public class VoucherDTO {
     private Long id;
     private String code;
     private Double value;
-    private String expirationDate;
+    private LocalDate expirationDate;
     private Long storeId;
     private Long userId;
 
@@ -27,10 +29,10 @@ public class VoucherDTO {
     public Double getValue(){
         return value;
     }
-    public void setExpiaryDate(String expireDate){
+    public void setExpiaryDate(LocalDate expireDate){
         this.expirationDate = expireDate;
     }
-    public String getExpirationDate(){
+    public LocalDate getExpirationDate(){
         return expirationDate;
     }
     public void setStoreId(Long storeId){
