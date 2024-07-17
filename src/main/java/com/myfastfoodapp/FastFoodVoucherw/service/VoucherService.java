@@ -1,5 +1,15 @@
 package com.myfastfoodapp.FastFoodVoucherw.service;
 
-public class VoucherService {
+import java.util.List;
+
+import com.myfastfoodapp.FastFoodVoucherw.dto.VoucherDTO;
+
+public interface VoucherService {
+    VoucherDTO buyVoucher(VoucherDTO voucherDTO);
+    VoucherDTO redeemVoucher(VoucherDTO voucherDTO);
+    VoucherDTO transferVoucher(VoucherDTO voucherDTO);
+    VoucherDTO getVoucherById(Long id);
+    List<VoucherDTO> getAllVouchers();
+
     
 }
