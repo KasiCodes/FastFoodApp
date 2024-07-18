@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import com.myfastfoodapp.FastFoodVoucherw.model.Store;
+import com.myfastfoodapp.FastFoodVoucherw.model.UserInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,15 +29,17 @@ public class VoucherServiceImpl implements VoucherService{
         voucher.setCode(voucherDTO.getCode());;
         voucher.setValue(voucherDTO.getValue());
         voucher.setExpirationDate(voucherDTO.getExpirationDate());
-        voucher.setStoreId(voucherDTO.getStoreId());
-        voucher.setUserId(voucherDTO.getUserId());
+        Store store = fetchStoreById(voucherDTO.getStoreId());
+        UserInfo user = fetchUserById(voucherDTO.getUserId());
+        voucher.setStore(store);
+        voucher.setUser(user);
         Voucher savedVoucher = voucherRepository.save(voucher);
         return mapToDTO(savedVoucher);
     } 
     @Override
     public VoucherDTO redeemVoucher(VoucherDTO voucherDTO) {
         Voucher voucher = voucherRepository.findById(voucherDTO.getId()).orElse(null);
-        if (voucher != null && voucher.getUserId().equals(voucherDTO.getUserId())) {
+        if (voucher != null && voucher.getId().equals(voucherDTO.getUserId())) {
             // Perform voucher redemption logic
             voucherRepository.delete(voucher);
             return mapToDTO(voucher);
@@ -45,9 +49,10 @@ public class VoucherServiceImpl implements VoucherService{
     @Override
     public VoucherDTO transferVoucher(VoucherDTO voucherDTO) {
         Voucher voucher = voucherRepository.findById(voucherDTO.getId()).orElse(null);
-        if (voucher != null && voucher.getUserId().equals(voucherDTO.getUserId())) {
+        if (voucher != null && voucher.getUser().getId().equals(voucherDTO.getUserId())) {
             // Perform voucher transfer logic
-            voucher.setUserId(voucherDTO.getUserId());
+            UserInfo newUser = fetchUserById(voucherDTO.getUserId());
+            voucher.setUser(newUser);
             Voucher updatedVoucher = voucherRepository.save(voucher);
             return mapToDTO(updatedVoucher);
         }
@@ -74,8 +79,8 @@ public class VoucherServiceImpl implements VoucherService{
         voucherDTO.setCode(voucher.getCode());
         voucherDTO.setValue(voucher.getValue());
         voucherDTO.setExpiaryDate(voucher.getExpirationDate());
-        voucherDTO.setStoreId(voucher.getStoreId());
-        voucherDTO.setUserId(voucher.getUserId());
+        voucherDTO.setStoreId(voucher.getStore().getId());
+        voucherDTO.setUserId(voucher.getUser().getId());
         return voucherDTO;
     }
     @Override
@@ -100,6 +105,14 @@ public class VoucherServiceImpl implements VoucherService{
         VoucherDTO voucherDTO = new VoucherDTO();
         BeanUtils.copyProperties(voucher, voucherDTO);
         return voucherDTO;
+    }
+    private UserInfo fetchUserById(Long userId) {
+        // Implement the actual logic to fetch UserInfo by ID
+        return new UserInfo();
+    }
+    private Store fetchStoreById(Long storeId) {
+        // Implement the actual logic to fetch Store by ID
+        return new Store();
     }
 
     

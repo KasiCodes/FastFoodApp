@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myfastfoodapp.FastFoodVoucherw.dto.StoreDTO;
-import com.myfastfoodapp.FastFoodVoucherw.dto.VoucherDTO;
 import com.myfastfoodapp.FastFoodVoucherw.service.StoreService;
 
 @RestController
@@ -28,18 +27,16 @@ public class StoreController {
         return ResponseEntity.ok(createdStore); 
     }
 
-    @GetMapping()
     public ResponseEntity<List<StoreDTO>> getAllStores(){
         List<StoreDTO> storeDTO = storeService.getAllStores();
         return ResponseEntity.ok(storeDTO);
     }
 
-    @GetMapping("/{id}")
     public ResponseEntity<StoreDTO> getStoreById(@PathVariable Long id){
         StoreDTO storedDTO = storeService.getStoreById(id);
         return ResponseEntity.ok(storedDTO);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteStore(@PathVariable Long id) {
         
         return ResponseEntity.noContent().build();

@@ -20,13 +20,6 @@ public class Voucher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "user_id")
-    private Long userId;
-
-    @Column(name = "store_id")
-    private Long storeId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id")
     private Store store;
@@ -47,12 +40,12 @@ public class Voucher {
     public Voucher(){
 
     }
-    public Voucher(String code, Double value, LocalDate expirationDate, Long storeId, Long userId) {
+    public Voucher(String code, Double value, LocalDate expirationDate, Store store, UserInfo user) {
         this.code = code;
         this.value = value;
         this.expirationDate = expirationDate;
-        this.storeId = storeId;
-        this.userId = userId;
+        this.store = store;
+        this.user = user;
     }
 
     public Long getId() {
@@ -87,20 +80,20 @@ public class Voucher {
         this.expirationDate = expirationDate;
     }
 
-    public Long getStoreId() {
-        return storeId;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserInfo getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserInfo user) {
+        this.user = user;
     }
     
     
