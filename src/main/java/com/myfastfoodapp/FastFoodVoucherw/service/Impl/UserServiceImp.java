@@ -20,6 +20,8 @@ public class UserServiceImp  implements UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    
+
     @Override
     public UserDTO registerUser(UserDTO userDTO){
         UserInfo user = new UserInfo();
