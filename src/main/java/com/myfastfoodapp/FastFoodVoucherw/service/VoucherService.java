@@ -10,7 +10,7 @@ public interface VoucherService {
     VoucherDTO transferVoucher(VoucherDTO voucherDTO);
     VoucherDTO getVoucherById(Long id);
     List<VoucherDTO> getAllVouchers();
-    void deleteVoucher(Long id);
+    boolean deleteVoucher(Long id);
     VoucherDTO updateVoucher(Long id, VoucherDTO voucherDTO);
 
     

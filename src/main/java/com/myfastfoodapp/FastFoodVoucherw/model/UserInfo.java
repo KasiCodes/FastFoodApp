@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Data
+@NoArgsConstructor
 
 public class UserInfo {
     @Id

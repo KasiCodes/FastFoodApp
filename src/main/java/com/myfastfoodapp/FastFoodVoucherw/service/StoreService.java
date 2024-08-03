@@ -10,4 +10,5 @@ public interface StoreService {
     List<StoreDTO> getAllStores();
     void deleteStoreById(Long Id);
     
+    
 }

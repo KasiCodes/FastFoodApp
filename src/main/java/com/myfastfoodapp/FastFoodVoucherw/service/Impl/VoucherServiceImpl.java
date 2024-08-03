@@ -83,9 +83,12 @@ public class VoucherServiceImpl implements VoucherService{
         voucherDTO.setUserId(voucher.getUser().getId());
         return voucherDTO;
     }
-    @Override
-    public void deleteVoucher(Long id) {
-        voucherRepository.deleteById(id);
+    public boolean deleteVoucher(Long id) {
+        if (voucherRepository.existsById(id)) {
+            voucherRepository.deleteById(id);
+            return true; // Deletion successful
+        }
+        return false; // Voucher not found
     }
     @Override
     public VoucherDTO updateVoucher(Long id, VoucherDTO voucherDTO) {
@@ -114,11 +117,5 @@ public class VoucherServiceImpl implements VoucherService{
         // Implement the actual logic to fetch Store by ID
         return new Store();
     }
-
-    
-
-
-
-
-    
+  
 }
