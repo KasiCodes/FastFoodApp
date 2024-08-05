@@ -2,6 +2,8 @@ package com.myfastfoodapp.FastFoodVoucherw.config;
 
 import com.myfastfoodapp.FastFoodVoucherw.security.JwtAuthenticationFilter;
 import com.myfastfoodapp.FastFoodVoucherw.security.JwtAuthorizationFilter;
+
+import org.apache.naming.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
