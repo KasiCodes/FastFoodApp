@@ -1,4 +1,4 @@
-package com.myfastfoodapp.FastFoodVoucherw.security;
+package com.myfastfoodapp.FastFoodVoucherw.config;
 
 
 import org.springframework.security.authentication.AuthenticationManager;

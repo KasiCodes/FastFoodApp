@@ -4,11 +4,11 @@ package com.myfastfoodapp.FastFoodVoucherw.model;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "users")
 @Data
-@NoArgsConstructor
 
 public class UserInfo {
     @Id
@@ -29,7 +29,9 @@ public class UserInfo {
 
     
     // Default constructor
-    public UserInfo() {}
+    public UserInfo() {
+
+    }
 
     // Constructor with fields
     public UserInfo(String name, String email, String password, Double walletBalance) {
