@@ -8,7 +8,7 @@ public interface StoreService {
     StoreDTO createStore(StoreDTO storeDTO);
     StoreDTO getStoreById(Long id);
     List<StoreDTO> getAllStores();
-    void deleteStoreById(Long Id);
-    
+    void deleteStore(Long id);
+    StoreDTO updateStore(Long id, StoreDTO storeDTO);
     
 }
