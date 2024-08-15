@@ -6,6 +6,10 @@ public class StoreDTO {
     private String name;
     private String location;
 
+    public StoreDTO(Long id2, String name2, String location2) {
+        //TODO Auto-generated constructor stub
+    }
+
     // Getters
     public Long getId() {
         return id;

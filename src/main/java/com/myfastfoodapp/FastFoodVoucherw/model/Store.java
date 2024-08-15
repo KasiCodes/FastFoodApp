@@ -33,6 +33,9 @@ public class Store {
         this.name = name;
         this.location = location;
     }
+    public Store(Long id2, String name2, String location2) {
+        //TODO Auto-generated constructor stub
+    }
     public Long getId() {
         return id;
     }
