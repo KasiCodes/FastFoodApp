@@ -1,16 +1,13 @@
 package com.myfastfoodapp.FastFoodVoucherw.service;
 
-import java.util.List;
-
 import com.myfastfoodapp.FastFoodVoucherw.dto.UserDTO;
 
+import java.util.List;
+
 public interface UserService {
-    
-    UserDTO registerUser(UserDTO userDTO);
-    String loginUser(UserDTO userDTO);
-    UserDTO getUserById(Long id);
-    List<UserDTO> getAllUsers();
-    void deleteUserById(Long id);
-    UserDTO createUser(UserDTO userDTO);
-    UserDTO updateUser(Long id, UserDTO userDTO);
+	List<UserDTO> getAllUsers();
+	UserDTO getUserById(Long id);
+	UserDTO createUser(UserDTO userDTO);
+	UserDTO updateUser(Long id, UserDTO userDTO);
+	void deleteUser(Long id);
 }
